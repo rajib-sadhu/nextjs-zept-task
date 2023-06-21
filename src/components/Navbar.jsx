@@ -2,12 +2,21 @@
 'use client';
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 
 const Navbar = () => {
 
     const router = useRouter();
-    console.log(router.pathname)
+
+    useEffect(() => {
+        if (router && typeof window !== 'undefined') {
+        //   Browser code
+          console.log('This code is running in the browser.');
+        }
+      }, [router]);
+
+    // console.log(router.pathname)
 
     const allLinks = <>
         <li className={router.pathname === '/' ? 'active text-sky-500' : ''} ><Link href="/" className="" >Home</Link></li>
